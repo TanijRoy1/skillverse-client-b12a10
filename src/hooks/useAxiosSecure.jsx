@@ -38,6 +38,7 @@ const useAxiosSecure = () => {
       instance.interceptors.response.eject(responseInterceptor);
     };
   }, [user, loading, signOutUser, navigate]);
+
   return instance;
 };
 export default useAxiosSecure;
