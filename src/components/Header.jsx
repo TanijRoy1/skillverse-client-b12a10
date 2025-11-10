@@ -51,12 +51,12 @@ const Header = () => {
           {
             user ? 
             <>
-            <div className="flex items-center gap-2">
+            <div className="lg:flex hidden items-center gap-2">
               <img src={user?.photoURL} alt={user?.displayName} className="w-7 h-7 object-cover rounded-full border-2 border-blue-800" />
               
               <span className="font-semibold text-lg text-blue-800">{user?.displayName || "Tanij Roy"}</span>
             </div>
-            <button onClick={handleSignOutUser} className="btn btn-sm btn-outline btn-primary">
+            <button onClick={handleSignOutUser} className="btn btn-sm btn-outline lg:block hidden btn-primary">
               Logout
             </button>
           </>:
@@ -80,13 +80,23 @@ const Header = () => {
               menuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-60"
             } transition-all duration-500 ease-in  transform flex absolute flex-col p-4 rounded-lg gap-2 border border-gray-400 bg-base-100 z-10 top-13 right-9 lg:hidden`}>
           {navLinks}
-          <li>
-            {/* <button className="btn btn-sm btn-primary">Logout</button> */}
+          {
+            user ? 
+            <>
+            <div className="flex items-center gap-2">
+              <img src={user?.photoURL} alt={user?.displayName} className="w-7 h-7 object-cover rounded-full border-2 border-blue-800" />
+              
+              <span className="font-semibold text-lg text-blue-800">{user?.displayName || "Tanij Roy"}</span>
+            </div>
+            <button onClick={handleSignOutUser} className="btn btn-sm btn-outline btn-primary">
+              Logout
+            </button>
+          </>:
 
-            <Link to="/login" className="btn btn-sm btn-primary">
-              Login
-            </Link>
-          </li>
+          <Link to="/auth/login" className="btn btn-sm btn-primary">
+            Login
+          </Link>
+          }
         </ul>
       
     </header>
