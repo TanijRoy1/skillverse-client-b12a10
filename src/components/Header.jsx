@@ -56,12 +56,12 @@ const Header = () => {
               
               <span className="font-semibold text-lg text-blue-800">{user?.displayName || "Tanij Roy"}</span>
             </div>
-            <button onClick={handleSignOutUser} className="btn btn-sm btn-outline lg:block hidden btn-primary">
+            <button onClick={handleSignOutUser} className="btn btn-sm btn-outline lg:flex hidden btn-primary">
               Logout
             </button>
           </>:
 
-          <Link to="/auth/login" className="btn btn-sm btn-primary">
+          <Link to="/auth/login" className="btn btn-sm btn-primary lg:flex hidden">
             Login
           </Link>
           }

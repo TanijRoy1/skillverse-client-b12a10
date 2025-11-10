@@ -1,11 +1,12 @@
 import React from "react";
-import { FaFacebook, FaTwitter, FaLinkedin, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaLinkedin, FaYoutube } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { SiStudyverse } from "react-icons/si";
 import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="bg-base-200 text-base-content mt-10 border-t">
+    <footer className="bg-[#111827] text-gray-300  mt-10">
       <div className="container mx-auto px-4 py-10 grid md:grid-cols-3 gap-8 text-center md:text-left">
         <div>
           <Link
@@ -36,7 +37,7 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link to="/dashboard" className="hover:text-primary">
+              <Link to="/dashboard/myEnrolledCourses" className="hover:text-primary">
                 Dashboard
               </Link>
             </li>
@@ -50,7 +51,7 @@ const Footer = () => {
               <FaFacebook />
             </a>
             <a href="#" className="hover:text-accent">
-              <FaTwitter />
+              <FaXTwitter />
             </a>
             <a href="#" className="hover:text-accent">
               <FaLinkedin />
@@ -62,8 +63,8 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="border-t py-4 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} EduLearn. All rights reserved.
+      <div className="border-t py-4 text-center text-sm text-gray-400">
+        © {new Date().getFullYear()} SkillVerse. All rights reserved.
       </div>
     </footer>
   );

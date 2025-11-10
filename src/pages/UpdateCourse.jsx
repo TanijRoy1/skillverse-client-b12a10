@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import useAxios from "../hooks/useAxios";
+import Spinner from "../components/Spinner";
 
 const UpdateCourse = () => {
   const axiosPublic = useAxios();
   const { id } = useParams();
   const [course, setCourse] = useState({});
+  const [courseLoading, setCourseLoading] = useState(true);
   const {
     title,
     image,
@@ -15,12 +17,18 @@ const UpdateCourse = () => {
     description,
     isFeatured,
   } = course;
+  
 
   useEffect(() => {
     axiosPublic.get(`/courses/${id}`).then((data) => {
       setCourse(data.data);
+      setCourseLoading(false);
     });
   }, [axiosPublic, id]);
+
+  if(courseLoading){
+    return <Spinner></Spinner>;
+   }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-700 via-purple-600 to-blue-500 py-10 px-4">
