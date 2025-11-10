@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router";
-import { FaUserCircle, FaBars, FaTimes } from "react-icons/fa";
+import {  FaBars, FaTimes } from "react-icons/fa";
 import { SiStudyverse } from "react-icons/si";
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
@@ -53,7 +53,7 @@ const Header = () => {
             <>
             <div className="flex items-center gap-2">
               <img src={user?.photoURL} alt={user?.displayName} className="w-7 h-7 object-cover rounded-full border-2 border-blue-800" />
-              {/* <FaUserCircle className="text-2xl text-primary" /> */}
+              
               <span className="font-semibold text-lg text-blue-800">{user?.displayName || "Tanij Roy"}</span>
             </div>
             <button onClick={handleSignOutUser} className="btn btn-sm btn-outline btn-primary">

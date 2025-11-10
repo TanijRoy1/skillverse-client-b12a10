@@ -1,0 +1,41 @@
+import React from "react";
+import { Link } from "react-router";
+
+const CourseCard = ({ course }) => {
+  const { _id, title, image, price, duration, category, description, added_by } =
+    course;
+
+  return (
+    <div className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 flex flex-col">
+     
+      <img src={image} alt={title} className="w-full h-48 object-cover" />
+
+      
+      <div className="p-5 flex-1 flex flex-col">
+        <h3 className="text-xl font-semibold text-indigo-700 mb-2">{title}</h3>
+
+        <p className="text-gray-600 text-sm mb-3 flex-1">{description}</p>
+
+        <div className="flex justify-between items-center mb-3">
+          <span className="text-lg font-bold text-indigo-700">${price}</span>
+          <span className="text-sm text-gray-500">{duration}</span>
+        </div>
+
+        <div className="flex justify-between items-center text-gray-500 text-sm mb-4">
+          <span className="capitalize">{category}</span>
+          <span>By {added_by}</span>
+        </div>
+
+        
+        <Link
+          to={`/courseDetails/${_id}`}
+          className="btn bg-indigo-600 hover:bg-indigo-700 text-white border-0 w-full"
+        >
+          View Details
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+export default CourseCard;
