@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router";
 import { FaUserCircle, FaBars, FaTimes } from "react-icons/fa";
+import { SiStudyverse } from "react-icons/si";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,14 +26,15 @@ const Header = () => {
         <div className="flex-1">
           <Link
             to="/"
-            className="text-2xl font-bold text-primary flex items-center"
+            className="text-2xl font-bold text-primary flex items-center gap-1.5"
           >
-            <span className="text-accent">Skill</span>Verse
+            <SiStudyverse />
+            <p><span className="text-accent">Skill</span>Verse</p>
           </Link>
         </div>
 
         <div className="hidden lg:flex">
-          <ul className="flex items-center px-1 gap-4 font-medium mx-2">{navLinks}</ul>
+          <ul className="flex items-center px-1 gap-4 font-medium mx-2 mr-4">{navLinks}</ul>
         </div>
 
         <div className="flex items-center gap-4">
@@ -46,7 +48,7 @@ const Header = () => {
             </button>
           </> */}
 
-          <Link to="/login" className="btn btn-sm btn-primary">
+          <Link to="/auth/login" className="btn btn-sm btn-primary">
             Login
           </Link>
 

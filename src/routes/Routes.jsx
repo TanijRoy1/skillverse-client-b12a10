@@ -8,6 +8,7 @@ import AddCourse from "../pages/AddCourse";
 import MyAddedCourses from "../pages/MyAddedCourses";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import AuthLayout from "../layouts/AuthLayout";
 
 const router = createBrowserRouter([
     {
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/auth",
-        Component: Dashboard,
+        Component: AuthLayout,
         children: [
             {
                 path: "login",
