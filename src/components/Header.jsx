@@ -2,9 +2,19 @@ import React, { useState } from "react";
 import { Link, NavLink } from "react-router";
 import { FaUserCircle, FaBars, FaTimes } from "react-icons/fa";
 import { SiStudyverse } from "react-icons/si";
+import useAuth from "../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const {user,signOutUser} = useAuth();
+  // console.log(user);
+
+  const handleSignOutUser = () => {
+    signOutUser().then(()=> {
+      toast.success("Sign Out Successfully");
+    })
+  }
 
   const navLinks = (
     <>
@@ -38,19 +48,23 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-4">
-          {/* <>
+          {
+            user ? 
+            <>
             <div className="flex items-center gap-2">
-              <FaUserCircle className="text-2xl text-primary" />
-              <span className="hidden sm:inline">{"Tanij Roy"}</span>
+              <img src={user?.photoURL} alt={user?.displayName} className="w-7 h-7 object-cover rounded-full border-2 border-blue-800" />
+              {/* <FaUserCircle className="text-2xl text-primary" /> */}
+              <span className="font-semibold text-lg text-blue-800">{user?.displayName || "Tanij Roy"}</span>
             </div>
-            <button className="btn btn-sm btn-outline btn-primary">
+            <button onClick={handleSignOutUser} className="btn btn-sm btn-outline btn-primary">
               Logout
             </button>
-          </> */}
+          </>:
 
           <Link to="/auth/login" className="btn btn-sm btn-primary">
             Login
           </Link>
+          }
 
           <button
             className="lg:hidden text-2xl text-primary cursor-pointer"

@@ -9,6 +9,7 @@ import MyAddedCourses from "../pages/MyAddedCourses";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import AuthLayout from "../layouts/AuthLayout";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        Component: Dashboard,
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
             {
                 path: "myEnrolledCourses",

@@ -1,9 +1,95 @@
 import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import useAuth from "../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
+  const { setUser, signUpUser, updateUser, googleSignUser } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const photoURL = e.target.photoURL.value;
+    const name = e.target.name.value;
+
+    const regExp = /^(?=.*[a-z])(?=.*[A-Z])[A-Za-z\d@$!%?&#^()\-_=+]{6,}$/;
+    if (!regExp.test(password)) {
+      toast.error(
+        "Password must be at least 6 characters long and include at least one uppercase and one lowercase letter"
+      );
+      return;
+    }
+
+    signUpUser(email, password)
+      .then((result) => {
+        const currentUser = result.user;
+
+        updateUser({ displayName: name, photoURL: photoURL })
+          .then(() => {
+            setUser({ ...currentUser, displayName: name, photoURL: photoURL });
+          })
+          .catch((e) => {
+            console.log(e);
+            setUser(currentUser);
+          });
+
+        e.target.reset();
+        toast.success("Account created successfully.");
+        navigate("/");
+      })
+      .catch((e) => {
+        console.log(e);
+        if (e.code === "auth/email-already-in-use") {
+          toast.error("User already exists in the database.");
+        } else if (e.code === "auth/weak-password") {
+          toast.error("Password must be at least 6 characters long.");
+        } else if (e.code === "auth/invalid-email") {
+          toast.error("Invalid email format. Please check your email.");
+        } else if (e.code === "auth/user-not-found") {
+          toast.error("User not found. Please sign up first.");
+        } else if (e.code === "auth/wrong-password") {
+          toast.error("Wrong password. Please try again.");
+        } else if (e.code === "auth/user-disabled") {
+          toast.error("This user account has been disabled.");
+        } else if (e.code === "auth/too-many-requests") {
+          toast.error("Too many attempts. Please try again later.");
+        } else if (e.code === "auth/operation-not-allowed") {
+          toast.error("Operation not allowed. Please contact support.");
+        } else if (e.code === "auth/network-request-failed") {
+          toast.error("Network error. Please check your connection.");
+        } else {
+          toast.error(e.message || "An unexpected error occurred.");
+        }
+      });
+  };
+
+  const handleSignInWithGoogle = () => {
+    googleSignUser()
+      .then((result) => {
+        const currUser = result.user;
+        // console.log(currUser);
+        toast.success(
+          `${currUser.displayName} Signed in with Google successfully.`
+        );
+        navigate("/");
+      })
+      .catch((e) => {
+        console.log(e);
+
+        if (e.code === "auth/popup-closed-by-user") {
+          toast.error("Sign-in cancelled. Please try again.");
+        } else if (e.code === "auth/network-request-failed") {
+          toast.error("Network error. Please check your internet connection.");
+        } else {
+          toast.error("Google sign-in failed. Please try again later.");
+        }
+      });
+  };
+
   return (
     <div className="flex-1 flex items-center justify-center bg-linear-to-br from-indigo-700 via-purple-600 to-blue-500 py-8 px-4">
       <div className="card bg-white/20 backdrop-blur-md w-full max-w-sm shrink-0 shadow-2xl text-white border border-white/30">
@@ -14,7 +100,7 @@ const Register = () => {
           <p className="text-center text-sm text-white/80 mb-6">
             Join thousands of learners and start your journey today.
           </p>
-          <form>
+          <form onSubmit={handleSignUp}>
             <fieldset className="fieldset">
               <label className="label text-white">Name</label>
               <input
@@ -76,8 +162,10 @@ const Register = () => {
             <div className="h-px w-16 bg-white/30"></div>
           </div>
 
-          
-          <button className="btn bg-white text-black border-[#e5e5e5]">
+          <button
+            onClick={handleSignInWithGoogle}
+            className="btn bg-white text-black border-[#e5e5e5]"
+          >
             <svg
               aria-label="Google logo"
               width="16"

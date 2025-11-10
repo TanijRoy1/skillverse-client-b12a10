@@ -1,9 +1,75 @@
 import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
+import useAuth from "../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
+  const { signInUser, googleSignUser } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    signInUser(email, password)
+      .then((result) => {
+        const currUser = result.user;
+        // console.log(currUser);
+        e.target.reset();
+        toast.success(`${currUser.displayName} Signed in successfully.`);
+        navigate(location?.state || "/");
+      })
+      .catch((e) => {
+        console.log(e);
+
+        if (e.code === "auth/invalid-email") {
+          toast.error("Invalid email address. Please check and try again.");
+        } else if (e.code === "auth/user-not-found") {
+          toast.error(
+            "No account found with this email. Please sign up first."
+          );
+        } else if (e.code === "auth/wrong-password") {
+          toast.error("Incorrect password. Please try again.");
+        } else if (e.code === "auth/user-disabled") {
+          toast.error(
+            "This account has been disabled. Please contact support."
+          );
+        } else if (e.code === "auth/too-many-requests") {
+          toast.error("Too many failed attempts. Please try again later.");
+        } else if (e.code === "auth/network-request-failed") {
+          toast.error("Network error. Please check your internet connection.");
+        } else {
+          toast.error("An unexpected error occurred. Please try again.");
+        }
+      });
+  };
+  const handleSignInWithGoogle = () => {
+    googleSignUser()
+      .then((result) => {
+        const currUser = result.user;
+        // console.log(currUser);
+        toast.success(
+          `${currUser.displayName} Signed in with Google successfully.`
+        );
+        navigate(location?.state || "/");
+      })
+      .catch((e) => {
+        console.log(e);
+
+        if (e.code === "auth/popup-closed-by-user") {
+          toast.error("Sign-in cancelled. Please try again.");
+        } else if (e.code === "auth/network-request-failed") {
+          toast.error("Network error. Please check your internet connection.");
+        } else {
+          toast.error("Google sign-in failed. Please try again later.");
+        }
+      });
+  };
+
   return (
     <div className="flex-1 flex items-center justify-center bg-linear-to-br from-indigo-700 via-purple-600 to-blue-500 py-8 px-4">
       <div className="card bg-white/20 backdrop-blur-md w-full max-w-sm mx-auto shrink-0 shadow-2xl text-white border border-white/30">
@@ -15,7 +81,7 @@ const Login = () => {
             Log in to continue your learning journey and access your enrolled
             courses.
           </p>
-          <form>
+          <form onSubmit={handleSignIn}>
             <fieldset className="fieldset">
               <label className="label text-white">Email</label>
               <input
@@ -67,8 +133,11 @@ const Login = () => {
             <span className="text-sm text-white/70">or</span>
             <div className="h-px w-16 bg-white/30"></div>
           </div>
-          
-          <button className="btn bg-white text-black border-[#e5e5e5]">
+
+          <button
+            onClick={handleSignInWithGoogle}
+            className="btn bg-white text-black border-[#e5e5e5]"
+          >
             <svg
               aria-label="Google logo"
               width="16"
