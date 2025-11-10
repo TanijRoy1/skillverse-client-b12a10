@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa";
 import MyContainer from "../components/MyContainer";
 import useAxios from "../hooks/useAxios";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import Spinner from "../components/Spinner";
 
 const CourseDetails = () => {
@@ -88,9 +88,9 @@ const CourseDetails = () => {
               <button className="btn bg-[#06D6A0] border-0 hover:bg-[#04B58A] text-black font-semibold">
                 Enroll Now
               </button>
-              <button className="btn bg-[#FFD166] border-0 hover:bg-[#FFC300] text-black font-semibold">
+              <Link to={`/updateCourse/${id}`} className="btn bg-[#FFD166] border-0 hover:bg-[#FFC300] text-black font-semibold">
                 Update Course
-              </button>
+              </Link>
               <button className="btn bg-[#EF476F] border-0 hover:bg-[#D83157] font-semibold">
                 Delete Course
               </button>

@@ -2,16 +2,19 @@ import React, { useEffect, useState } from "react";
 import MyContainer from "./MyContainer";
 import useAxios from "../hooks/useAxios";
 import CourseCard from "./CourseCard";
+import Spinner from "./Spinner";
 
 const PopularCourses = () => {
-    const axiosPublic = useAxios();
-    const [courses, setCourses] = useState([]);
+  const axiosPublic = useAxios();
+  const [courses, setCourses] = useState([]);
+  const [courseLoading, setCourseLoading] = useState(true);
 
-    useEffect(()=> {
-        axiosPublic.get("/courses").then(data => {
-            setCourses(data.data);
-        })
-    },[axiosPublic])
+  useEffect(() => {
+    axiosPublic.get("/popularCourses").then((data) => {
+      setCourses(data.data);
+      setCourseLoading(false);
+    });
+  }, [axiosPublic]);
   return (
     <div className="bg-gray-100 py-10">
       <MyContainer>
@@ -25,13 +28,15 @@ const PopularCourses = () => {
           with SkillVerse.
         </p>
 
-        <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
-            {
-                courses.map(course => <CourseCard key={course._id} course={course}></CourseCard>)
-            }
-        </div>
-
-
+        {courseLoading ? (
+          <Spinner></Spinner>
+        ) : (
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
+            {courses.map((course) => (
+              <CourseCard key={course._id} course={course}></CourseCard>
+            ))}
+          </div>
+        )}
       </MyContainer>
     </div>
   );

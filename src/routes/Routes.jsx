@@ -11,6 +11,7 @@ import Register from "../pages/Register";
 import AuthLayout from "../layouts/AuthLayout";
 import PrivateRoute from "./PrivateRoute";
 import CourseDetails from "../pages/CourseDetails";
+import UpdateCourse from "../pages/UpdateCourse";
 
 const router = createBrowserRouter([
     {
@@ -28,8 +29,11 @@ const router = createBrowserRouter([
             {
                 path: "courseDetails/:id",
                 element: <PrivateRoute><CourseDetails></CourseDetails></PrivateRoute>
-            }
-            
+            },
+            {
+                path: "updateCourse/:id",
+                element: <PrivateRoute><UpdateCourse></UpdateCourse></PrivateRoute>
+            },  
         ]
     },
     {
