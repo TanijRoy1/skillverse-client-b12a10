@@ -14,7 +14,7 @@ const CourseCard = ({ course }) => {
       <div className="p-5 flex-1 flex flex-col">
         <h3 className="text-xl font-semibold text-indigo-700 mb-2">{title}</h3>
 
-        <p className="text-gray-600 text-sm mb-3 flex-1">{description}</p>
+        <p className="text-gray-600 text-sm mb-3 flex-1">{description.slice(0,100)}...</p>
 
         <div className="flex justify-between items-center mb-3">
           <span className="text-lg font-bold text-indigo-700">${price}</span>
