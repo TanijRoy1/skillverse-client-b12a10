@@ -12,12 +12,16 @@ import MyContainer from "../components/MyContainer";
 import { Link, useParams } from "react-router";
 import Spinner from "../components/Spinner";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import useAuth from "../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const CourseDetails = () => {
    const axiosSecure = useAxiosSecure();
+   const {user} = useAuth();
    const {id} = useParams();
    const [course, setCourse] = useState({});
    const [courseLoading, setCourseLoading] = useState(true);
+   const [refetch, setrefetch] = useState(false);
    const {title, image, price, duration, category, description, added_by, isFeatured, enrollment} = course;
    
    useEffect(()=>{
@@ -25,7 +29,32 @@ const CourseDetails = () => {
         setCourse(data.data);
         setCourseLoading(false);
     })
-   },[axiosSecure, id])
+   },[axiosSecure, id, refetch])
+
+   const handleEnroll = () => {
+    const newCourse = {
+      courseId: id,
+      title: title,
+      image: image,
+      price: price,
+      duration: duration,
+      category: category,
+      description: description,
+      isFeatured: isFeatured,
+      added_by: added_by,
+      enrollment: enrollment + 1,
+      enrolled_by: user?.email,
+    }
+
+    axiosSecure.post(`/myEnrolledCourses/${id}`, newCourse).then(data => {
+      if(data.data.insertedId){
+        toast.success("You’ve successfully enrolled — happy learning!");
+        setrefetch(!refetch);
+      } else {
+        toast.error(data.data.message);
+      }
+    })
+   }
   
 
   
@@ -90,9 +119,8 @@ const CourseDetails = () => {
               <FaUsers /> <span>Enrolled: {enrollment} learners</span>
             </div>
 
-            {/* Action Buttons */}
             <div className="flex flex-col gap-3 pt-4">
-              <button className="btn bg-[#06D6A0] border-0 hover:bg-[#04B58A] text-black font-semibold">
+              <button onClick={handleEnroll} className="btn bg-[#06D6A0] border-0 hover:bg-[#04B58A] text-black font-semibold">
                 Enroll Now
               </button>
               <Link

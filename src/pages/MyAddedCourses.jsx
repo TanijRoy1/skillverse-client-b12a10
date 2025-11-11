@@ -34,7 +34,7 @@ const MyAddedCourses = () => {
         {courseLoading ? (
           <Spinner></Spinner>
         ) : (
-          <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
+          <div className="grid lg:grid-cols-3 grid-cols-1 gap-4">
             {courses.map((course) => (
               <MyCourseCard key={course._id} course={course}></MyCourseCard>
             ))}
