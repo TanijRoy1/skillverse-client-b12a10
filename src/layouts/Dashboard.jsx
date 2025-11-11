@@ -9,8 +9,8 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen">
       <Header></Header>
-      <MyContainer className="flex gap-2 border min-h-[80vh]">
-        <div className="border min-h-[80vh] w-[23%] h-full flex flex-col p-3">
+      <MyContainer className="grid grid-cols-9 gap-2 border min-h-[80vh]">
+        <div className="border col-span-2  h-full flex flex-col p-3">
           <NavLink
             to={`/dashboard/myEnrolledCourses`}
             className={`flex items-center gap-1`}
@@ -33,7 +33,7 @@ const Dashboard = () => {
             My Added Courses
           </NavLink>
         </div>
-        <div className="flex-1">
+        <div className="flex-1 col-span-7">
           <Outlet></Outlet>
         </div>
       </MyContainer>

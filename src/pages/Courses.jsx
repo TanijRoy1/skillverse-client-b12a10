@@ -25,10 +25,10 @@ const Courses = () => {
     if(category === "All"){
         setCourseLoading(true);
         axiosPublic.get("/courses").then((data) => {
-        setFilteredCourses(data.data);
-        setSelectedCategory(category);
-        setCourseLoading(false);
-      });
+           setFilteredCourses(data.data);
+           setSelectedCategory(category);
+           setCourseLoading(false);
+        });
         return;
     }
     
@@ -41,7 +41,7 @@ const Courses = () => {
   }
 
   
-  const categories = ["All", ...courses.map((c) => c.category)];
+  const categories = ["All", ...new Set(courses.map((c) => c.category))];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-700 via-purple-600 to-blue-500 text-white py-10">
