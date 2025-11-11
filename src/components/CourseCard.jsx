@@ -8,7 +8,7 @@ const CourseCard = ({ course }) => {
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 flex flex-col">
      
-      <img src={image} alt={title} className="w-full h-48 object-cover" />
+      <img src={image} alt={title} className="w-full h-56 object-cover transition-transform duration-300 hover:scale-105" />
 
       
       <div className="p-5 flex-1 flex flex-col">
@@ -33,6 +33,7 @@ const CourseCard = ({ course }) => {
         >
           View Details
         </Link>
+
       </div>
     </div>
   );

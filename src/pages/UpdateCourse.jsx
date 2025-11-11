@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router";
-import useAxios from "../hooks/useAxios";
+import { useNavigate, useParams } from "react-router";
 import Spinner from "../components/Spinner";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const UpdateCourse = () => {
-  const axiosPublic = useAxios();
+  const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   const [course, setCourse] = useState({});
   const [courseLoading, setCourseLoading] = useState(true);
+  const navigate = useNavigate();
   const {
     title,
     image,
@@ -17,14 +19,37 @@ const UpdateCourse = () => {
     description,
     isFeatured,
   } = course;
+
+  const handleUpdateCourse = (e) => {
+      e.preventDefault();
+      const updatedCourse = {
+        title: e.target.title.value,
+        image: e.target.image.value,
+        price: parseInt(e.target.price.value),
+        duration: e.target.duration.value,
+        category: e.target.category.value,
+        description: e.target.description.value,
+        isFeatured: e.target.isFeatured.checked,
+      };
+      // console.log(updatedCourse);
+  
+      axiosSecure.patch(`/courses/${id}`, updatedCourse).then(data => {
+          // console.log(data.data)
+          if(data.data.modifiedCount){
+              toast.success(`${updatedCourse.title} is updated successfully`);
+              navigate("/");
+          }
+      })
+  
+    };
   
 
   useEffect(() => {
-    axiosPublic.get(`/courses/${id}`).then((data) => {
+    axiosSecure.get(`/courses/${id}`).then((data) => {
       setCourse(data.data);
       setCourseLoading(false);
     });
-  }, [axiosPublic, id]);
+  }, [axiosSecure, id]);
 
   if(courseLoading){
     return <Spinner></Spinner>;
@@ -37,7 +62,7 @@ const UpdateCourse = () => {
           <h1 className="text-2xl font-bold text-[#FFD166] text-center mb-5">
             Update Course
           </h1>
-          <form>
+          <form onSubmit={handleUpdateCourse}>
             <div className="flex flex-col gap-1 mb-3">
               <label className="label">Title</label>
               <input
@@ -86,13 +111,28 @@ const UpdateCourse = () => {
             <div className="flex items-end gap-3 w-full mb-3">
                 <div className="flex flex-col w-full gap-1">
               <label className="label">Category</label>
-              <input
-                type="text"
+              <select
                 name="category"
                 defaultValue={category}
-                className="input input-bordered w-full text-black"
                 required
-              />
+                className="select w-full text-black"
+              >
+                <option value="">Select category</option>
+                <option value="Programming">Programming</option>
+                <option value="Frontend Development">
+                  Frontend Development
+                </option>
+                <option value="Artificial Intelligence">
+                  Artificial Intelligence
+                </option>
+                <option value="Security">Security</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Design">Design</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Business">Business</option>
+                <option value="Data Science">Data Science</option>
+                <option value="Photography">Photography</option>
+              </select>
             </div>
             <div className="flex items-center mb-1 gap-2 w-full">
               <input

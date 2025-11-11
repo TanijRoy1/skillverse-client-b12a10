@@ -6,9 +6,9 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
 
 const AddCourse = () => {
-    const {user} = useAuth();
-    const axiosSecure = useAxiosSecure();
-    const navigate = useNavigate();
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
 
   const handleAddCourse = (e) => {
     e.preventDefault();
@@ -25,18 +25,17 @@ const AddCourse = () => {
     };
     // console.log(newCourse);
 
-    axiosSecure.post("/courses", newCourse).then(data => {
-        console.log(data.data)
-        if(data.data.insertedId){
-            toast.success(`${newCourse.title} is added successfully`);
-            e.target.reset();
-            navigate("/");
-        }
-    })
-
+    axiosSecure.post("/courses", newCourse).then((data) => {
+      console.log(data.data);
+      if (data.data.insertedId) {
+        toast.success(`${newCourse.title} is added successfully`);
+        e.target.reset();
+        navigate("/");
+      }
+    });
   };
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-700 via-purple-600 to-blue-500 py-12 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-blue-500  shadow-md border border-gray-200 rounded-2xl py-12 text-white">
       <MyContainer>
         <div className="max-w-2xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-2xl">
           <h2 className="text-3xl font-bold mb-6 text-center text-[#FFD166]">

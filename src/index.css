@@ -16,3 +16,19 @@
 .myNavLink.active{
   @apply border-blue-700 text-blue-700
 }
+
+/* const linkClass = ({ isActive }) =>
+    ` ${
+      isActive
+        ? ""
+        : ""
+    }`; */
+.dashboardLink{
+  @apply flex items-center gap-1.5 px-2 py-2 rounded-lg font-medium transition-all duration-200;
+}
+.dashboardLink:hover{
+  @apply text-gray-700 hover:bg-indigo-100 hover:text-indigo-700;
+}
+.dashboardLink.active{
+  @apply bg-indigo-600 text-white shadow-md hover:bg-indigo-600 hover:text-white;
+}

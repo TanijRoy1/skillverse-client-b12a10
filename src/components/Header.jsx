@@ -52,7 +52,7 @@ const Header = () => {
             user ? 
             <>
             <div className="lg:flex hidden items-center gap-2">
-              <img src={user?.photoURL} alt={user?.displayName} className="w-7 h-7 object-cover rounded-full border-2 border-blue-800" />
+              <img src={user?.photoURL || "https://i.ibb.co.com/B57YNzbs/user-blue-icon-isolated-on-white-background-free-vector.jpg"} alt={user?.displayName} className="w-7 h-7 object-cover rounded-full border-2 border-blue-800" />
               
               <span className="font-semibold text-lg text-blue-800">{user?.displayName || "Tanij Roy"}</span>
             </div>
@@ -84,7 +84,7 @@ const Header = () => {
             user ? 
             <>
             <div className="flex items-center gap-2">
-              <img src={user?.photoURL} alt={user?.displayName} className="w-7 h-7 object-cover rounded-full border-2 border-blue-800" />
+              <img src={user?.photoURL || "https://i.ibb.co.com/B57YNzbs/user-blue-icon-isolated-on-white-background-free-vector.jpg"} alt={user?.displayName} className="w-7 h-7 object-cover rounded-full border-2 border-blue-800" />
               
               <span className="font-semibold text-lg text-blue-800">{user?.displayName || "Tanij Roy"}</span>
             </div>
