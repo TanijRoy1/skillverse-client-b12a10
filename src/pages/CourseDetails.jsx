@@ -14,6 +14,7 @@ import Spinner from "../components/Spinner";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const CourseDetails = () => {
   const axiosSecure = useAxiosSecure();
@@ -22,6 +23,7 @@ const CourseDetails = () => {
   const [course, setCourse] = useState({});
   const [courseLoading, setCourseLoading] = useState(true);
   const [refetch, setrefetch] = useState(false);
+  const [reviews, setReviews] = useState([]);
   const {
     title,
     image,
@@ -42,6 +44,12 @@ const CourseDetails = () => {
       setCourseLoading(false);
     });
   }, [axiosSecure, id, refetch]);
+
+  useEffect(() => {
+    axiosSecure.get(`/reviews/${id}`).then((data) => {
+      setReviews(data.data);
+    });
+  }, [axiosSecure, id]);
 
   const handleEnroll = () => {
     const newCourse = {
@@ -66,6 +74,34 @@ const CourseDetails = () => {
         setrefetch(!refetch);
       } else {
         toast.error(data.data.message);
+      }
+    });
+  };
+
+  const handleAddReview = (e) => {
+    e.preventDefault();
+    const review = {
+      courseId: id,
+      name: user?.displayName,
+      email: user?.email,
+      photo: user?.photoURL,
+      rating: parseInt(e.target.rating.value),
+      review: e.target.review.value,
+    };
+    // console.log(review);
+    axiosSecure.post("/reviews", review).then((data) => {
+      if (data.data.insertedId) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Review submitted! Thanks for sharing your feedback",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
+        review._id = data.data.insertedId;
+        setReviews([...reviews, review]);
+        e.target.reset();
       }
     });
   };
@@ -157,7 +193,98 @@ const CourseDetails = () => {
             </div>
           </div>
         </div>
-        
+
+        <section className="mt-16 sm:bg-white/10 sm:border pt-6 border-t border-white/20 sm:rounded-2xl sm:p-8 sm:shadow-xl">
+          <h2 className="sm:text-3xl text-2xl font-bold text-[#FFD166] mb-6 text-center">
+            Student Reviews
+          </h2>
+
+          <form
+            onSubmit={handleAddReview}
+            className="max-w-xl mx-auto mb-12 p-6 rounded-2xl bg-white/10 border border-white/20 shadow-lg backdrop-blur-md space-y-5"
+          >
+            <h2 className="text-2xl font-bold text-center text-white mb-4">
+              Share Your Feedback
+            </h2>
+
+            <div>
+              <label className="block font-semibold mb-2 text-white/90">
+                Your Rating
+              </label>
+              <select
+                name="rating"
+                className="w-full px-4 py-3 rounded-xl bg-white/90 text-black font-medium border-none outline-none focus:ring-2 focus:ring-[#FFD166] transition"
+              >
+                <option value="5">⭐⭐⭐⭐⭐ (5-Excellent)</option>
+                <option value="4">⭐⭐⭐⭐ (4-Good)</option>
+                <option value="3">⭐⭐⭐ (3-Average)</option>
+                <option value="2">⭐⭐ (2-Poor)</option>
+                <option value="1">⭐ (1-Terrible)</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block font-semibold mb-2 text-white/90">
+                Your Review
+              </label>
+              <textarea
+                name="review"
+                placeholder="Share your experience..."
+                rows="5"
+                className="w-full px-4 py-3 rounded-xl bg-white/90 text-black border-none outline-none resize-none focus:ring-2 focus:ring-[#06D6A0] transition"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-[#06D6A0] to-[#FFD166] text-black font-semibold text-lg shadow-md hover:shadow-xl hover:scale-[1.02] transition-transform duration-300"
+            >
+              Submit Review
+            </button>
+          </form>
+
+          <div className="space-y-6">
+            {reviews.length === 0 ? (
+              <p className="text-center text-white/70 text-lg italic bg-white/5 py-6 rounded-xl border border-white/20">
+                No reviews have been added yet. Be the first to share your
+                experience!
+              </p>
+            ) : (
+              reviews.map((r, index) => (
+                <div
+                  key={index}
+                  className="bg-white/10 border border-white/20 rounded-2xl p-6 shadow-md hover:shadow-lg hover:border-[#FFD166]/40 transition-all duration-300"
+                >
+                  <div className="flex items-center gap-4 mb-3">
+                    <img
+                      src={r.photo}
+                      alt={r.name}
+                      className="w-14 h-14 rounded-full object-cover border-2 border-[#FFD166]"
+                    />
+                    <div>
+                      <h3 className="text-lg font-semibold text-white flex sm:flex-row flex-col sm:items-center sm:gap-2 gap-1">
+                        {r.name}
+                        <span className="flex">
+                          {[...Array(r.rating)].map((_, i) => (
+                            <FaStar
+                              key={i}
+                              className="text-yellow-400 text-sm"
+                            />
+                          ))}
+                        </span>
+                      </h3>
+                      <p className="text-white/60 text-sm mt-1">{r.email}</p>
+                    </div>
+                  </div>
+
+                  <p className="text-white/90 leading-relaxed bg-white/5 p-3 rounded-xl italic">
+                    “{r.review}”
+                  </p>
+                </div>
+              ))
+            )}
+          </div>
+        </section>
       </MyContainer>
     </div>
   );
