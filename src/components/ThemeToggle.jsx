@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
 
   useEffect(() => {
     document.querySelector("html").setAttribute("data-theme", theme);

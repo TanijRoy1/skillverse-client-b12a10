@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 
 const CourseCard = ({ course }) => {
-  const { _id, title, image, price, duration, category, description, added_by } =
+  const { _id, title, image, price, duration, category, description, instructorEmail } =
     course;
 
   return (
@@ -23,7 +23,7 @@ const CourseCard = ({ course }) => {
 
         <div className="flex justify-between items-center text-base-content/70 text-sm mb-4">
           <span className="capitalize">{category}</span>
-          <span>By {added_by}</span>
+          <span>By {instructorEmail}</span>
         </div>
 
         

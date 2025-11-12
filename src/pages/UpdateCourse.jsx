@@ -69,7 +69,7 @@ const UpdateCourse = () => {
                 type="text"
                 name="title"
                 defaultValue={title}
-                className="input input-bordered w-full text-black"
+                className="input input-bordered w-full text-accent"
                 required
               />
             </div>
@@ -80,7 +80,7 @@ const UpdateCourse = () => {
                 type="text"
                 name="image"
                 defaultValue={image}
-                className="input input-bordered w-full text-black"
+                className="input input-bordered w-full text-accent"
                 required
               />
             </div>
@@ -93,7 +93,7 @@ const UpdateCourse = () => {
                 name="price"
                 step="0.01"
                 defaultValue={price}
-                className="input input-bordered w-full text-black"
+                className="input input-bordered w-full text-accent"
                 required
               />
             </div>
@@ -103,7 +103,7 @@ const UpdateCourse = () => {
                 type="text"
                 name="duration"
                 defaultValue={duration}
-                className="input input-bordered w-full text-black"
+                className="input input-bordered w-full text-accent"
                 required
               />
             </div>
@@ -115,7 +115,7 @@ const UpdateCourse = () => {
                 name="category"
                 defaultValue={category}
                 required
-                className="select w-full text-black"
+                className="select w-full text-accent"
               >
                 <option value="">Select category</option>
                 <option value="Programming">Programming</option>
@@ -152,7 +152,7 @@ const UpdateCourse = () => {
               <textarea
                 name="description"
                 defaultValue={description}
-                className="textarea textarea-bordered w-full text-black"
+                className="textarea textarea-bordered w-full text-accent"
                 rows={5}
                 required
               />

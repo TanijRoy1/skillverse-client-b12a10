@@ -22,7 +22,7 @@ const MyEnrolledCourses = () => {
   return (
     <div className="py-10 min-h-screen bg-base-200 shadow-md border border-base-300 rounded-2xl">
       <MyContainer>
-        <h2 className="text-center text-4xl font-bold text-primary mb-4">
+        <h2 className="text-center sm:text-4xl text-2xl font-bold text-primary mb-4">
           My Enrolled Courses
         </h2>
 
@@ -51,7 +51,7 @@ const MyEnrolledCourses = () => {
               </div>
             ) : (
               courses.map((course) => (
-                <MyEnrolledCard key={course._id} course={course} />
+                <MyEnrolledCard key={course._id} course={course} courses={courses} setCourses={setCourses} />
               ))
             )}
           </div>

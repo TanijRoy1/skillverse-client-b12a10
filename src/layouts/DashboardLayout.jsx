@@ -9,7 +9,8 @@ const DashboardLayout = () => {
     <div>
       <Header></Header>
       <MyContainer className="grid grid-cols-1 md:grid-cols-9 gap-6 min-h-[80vh] my-10">
-        <aside className="bg-base-200 shadow-md border border-base-300 rounded-2xl lg:col-span-2 col-span-3 py-6 px-3 flex flex-col gap-3">
+        
+        <aside className="bg-base-200 shadow-md border border-base-300 rounded-2xl md:col-span-12 col-span-12 w-full py-6 px-3 flex flex-col gap-3">
           <h2 className="text-xl font-bold text-primary mb-4 text-center">
             Dashboard
           </h2>
@@ -33,7 +34,7 @@ const DashboardLayout = () => {
           </NavLink>
         </aside>
 
-        <main className="lg:col-span-7 col-span-6">
+        <main className="lg:col-span-7 col-span-12">
           <Outlet />
         </main>
       </MyContainer>
