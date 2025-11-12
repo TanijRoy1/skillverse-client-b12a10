@@ -18,11 +18,11 @@ const PopularCourses = () => {
   return (
     <div className="bg-base-200 py-10">
       <MyContainer>
-        <h2 className="text-center text-4xl font-bold text-primary mb-4">
+        <h2 className="text-center sm:text-4xl text-3xl font-bold text-primary mb-4">
           Popular Courses
         </h2>
 
-        <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+        <p className="text-center text-base-content/70 max-w-2xl mx-auto mb-12">
           Explore our most sought-after courses curated by experts. Learn new
           skills, enhance your knowledge, and take your career to the next level
           with SkillVerse.
