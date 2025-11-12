@@ -6,7 +6,7 @@ const MyCourseCard = ({ course }) => {
   const { _id, title, image, category, price, duration, description } = course;
 
   return (
-    <div className="relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group border border-gray-100">
+    <div className="relative bg-base-100 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group border border-base-300">
       <div className="relative">
         <img
           src={image}
@@ -24,12 +24,12 @@ const MyCourseCard = ({ course }) => {
       </div>
 
       <div className="p-5 space-y-2">
-        <h3 className="text-xl font-semibold text-gray-800 line-clamp-1">
+        <h3 className="text-xl font-semibold text-accent line-clamp-1">
           {title}
         </h3>
-        <p className="text-gray-500 text-sm line-clamp-2">{description}</p>
+        <p className="text-accent-content text-sm line-clamp-2">{description}</p>
 
-        <div className="flex justify-between text-sm text-gray-600">
+        <div className="flex justify-between text-sm text-accent-content">
           <p>
             <span className="font-semibold">Category:</span> {category}
           </p>
@@ -38,21 +38,21 @@ const MyCourseCard = ({ course }) => {
           </p>
         </div>
 
-        <p className="text-gray-600 text-sm">
+        <p className="text-accent-content text-sm">
           <span className="font-semibold">Duration:</span> {duration}
         </p>
 
         <div className="flex items-center justify-between pt-3">
           <Link
             to={`/courseDetails/${_id}`}
-            className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-all"
+            className="flex items-center gap-2 text-primary hover:text-info font-medium transition-all"
           >
             <FaEye /> View
           </Link>
 
           <Link
             to={`/updateCourse/${_id}`}
-            className="flex items-center gap-2 text-indigo-600 hover:text-indigo-700 font-medium transition-all"
+            className="flex items-center gap-2 text-primary hover:text-info font-medium transition-all"
           >
             <FaEdit /> Edit
           </Link>

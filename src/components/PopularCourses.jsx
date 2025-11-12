@@ -16,7 +16,7 @@ const PopularCourses = () => {
     });
   }, [axiosPublic]);
   return (
-    <div className="bg-gray-100 py-10">
+    <div className="bg-base-200 py-10">
       <MyContainer>
         <h2 className="text-center text-4xl font-bold text-primary mb-4">
           Popular Courses

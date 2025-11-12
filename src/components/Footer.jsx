@@ -11,11 +11,11 @@ const Footer = () => {
         <div>
           <Link
             to="/"
-            className="text-2xl font-bold text-primary flex items-center gap-1.5"
+            className="text-2xl font-bold text-blue-800 flex items-center gap-1.5"
           >
             <SiStudyverse />
             <p>
-              <span className="text-accent">Skill</span>Verse
+              <span className="text-cyan-500">Skill</span>Verse
             </p>
           </Link>
           <p className="mt-3 text-sm">

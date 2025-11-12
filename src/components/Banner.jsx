@@ -4,11 +4,14 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import ThemeToggle from "./ThemeToggle";
 
 const Banner = () => {
   return (
     <>
-      <Swiper
+      <div className="relative">
+        <ThemeToggle></ThemeToggle>
+        <Swiper
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
@@ -126,6 +129,7 @@ const Banner = () => {
           </div>
         </SwiperSlide>
       </Swiper>
+      </div>
     </>
   );
 };

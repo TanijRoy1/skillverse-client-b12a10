@@ -1,25 +1,60 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: light --default;
- }
+  themes: light --default, dark --prefersdark;
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+
+  --color-primary: #3B82F6;
+  --color-secondary: #F43F5E;
+  --color-accent: #0F172A;
+  --color-accent-content: #5c6570;
+  --color-base-100: #F9FAFB;
+  --color-base-200: #E5E7EB;
+  --color-base-300: #D1D5DB;
+  --color-info: #2563EB;
+  --color-success: #16A34A;
+  --color-warning: #FACC15;
+  --color-error: #DC2626;
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+
+  --color-primary: #60A5FA;
+  --color-secondary: #F87171;
+  --color-accent: #F9FAFB;
+  --color-accent-content: #9CA3AF;
+  --color-base-100: #0F172A;
+  --color-base-200: #1E293B;
+  --color-base-300: #334155;
+  --color-info: #3B82F6;
+  --color-success: #22C55E;
+  --color-warning: #EAB308;
+  --color-error: #EF4444;
+}
+
+
 
 *{
    font-family: "Roboto", sans-serif;
 }
 .myNavLink{
-  @apply border-b-2 border-white 
+  @apply border-b-2 border-base-100
 }
 .myNavLink:hover{
-  @apply text-blue-700
+  @apply text-primary
 }
 .myNavLink.active{
-  @apply border-blue-700 text-blue-700
+  @apply border-primary text-primary
 }
 
 
 .dashboardLink{
-  @apply flex items-center gap-1.5 px-2 py-2 rounded-lg font-medium transition-all duration-200;
+  @apply flex items-center text-accent gap-1.5 px-2 py-2 rounded-lg font-medium transition-all duration-200;
 }
 .dashboardLink:hover{
   @apply text-gray-700 hover:bg-indigo-100 hover:text-indigo-700;

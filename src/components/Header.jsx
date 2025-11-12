@@ -36,10 +36,10 @@ const Header = () => {
         <div className="flex-1">
           <Link
             to="/"
-            className="text-2xl font-bold text-primary flex items-center gap-1.5"
+            className="text-2xl font-bold text-blue-800 flex items-center gap-1.5"
           >
             <SiStudyverse />
-            <p><span className="text-accent">Skill</span>Verse</p>
+            <p><span className="text-cyan-500">Skill</span>Verse</p>
           </Link>
         </div>
 
@@ -52,9 +52,9 @@ const Header = () => {
             user ? 
             <>
             <div className="lg:flex hidden items-center gap-2">
-              <img src={user?.photoURL || "https://i.ibb.co.com/B57YNzbs/user-blue-icon-isolated-on-white-background-free-vector.jpg"} alt={user?.displayName} className="w-7 h-7 object-cover rounded-full border-2 border-blue-800" />
+              <img src={user?.photoURL || "https://i.ibb.co.com/B57YNzbs/user-blue-icon-isolated-on-white-background-free-vector.jpg"} alt={user?.displayName} className="w-7 h-7 object-cover rounded-full border-2 border-primary" />
               
-              <span className="font-semibold text-lg text-blue-800">{user?.displayName || "Tanij Roy"}</span>
+              <span className="font-semibold text-lg text-primary">{user?.displayName || "Tanij Roy"}</span>
             </div>
             <button onClick={handleSignOutUser} className="btn btn-sm btn-outline lg:flex hidden btn-primary">
               Logout
@@ -78,15 +78,15 @@ const Header = () => {
       
         <ul className={`${
               menuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-60"
-            } transition-all duration-500 ease-in  transform flex absolute flex-col p-4 rounded-lg gap-2 border border-gray-400 bg-base-100 z-10 top-13 right-9 lg:hidden`}>
+            } transition-all duration-500 ease-in  transform flex absolute flex-col p-4 rounded-lg gap-2  border border-gray-400 bg-base-100 z-50 top-13 right-9 lg:hidden`}>
           {navLinks}
           {
             user ? 
             <>
             <div className="flex items-center gap-2">
-              <img src={user?.photoURL || "https://i.ibb.co.com/B57YNzbs/user-blue-icon-isolated-on-white-background-free-vector.jpg"} alt={user?.displayName} className="w-7 h-7 object-cover rounded-full border-2 border-blue-800" />
+              <img src={user?.photoURL || "https://i.ibb.co.com/B57YNzbs/user-blue-icon-isolated-on-white-background-free-vector.jpg"} alt={user?.displayName} className="w-7 h-7 object-cover rounded-full border-2 border-primary" />
               
-              <span className="font-semibold text-lg text-blue-800">{user?.displayName || "Tanij Roy"}</span>
+              <span className="font-semibold text-lg text-primary">{user?.displayName || "Tanij Roy"}</span>
             </div>
             <button onClick={handleSignOutUser} className="btn btn-sm btn-outline btn-primary">
               Logout

@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home";
 import Courses from "../pages/Courses";
-import Dashboard from "../layouts/Dashboard";
 import MyEnrolledCourses from "../pages/MyEnrolledCourses";
 import AddCourse from "../pages/AddCourse";
 import MyAddedCourses from "../pages/MyAddedCourses";
@@ -12,11 +11,14 @@ import AuthLayout from "../layouts/AuthLayout";
 import PrivateRoute from "./PrivateRoute";
 import CourseDetails from "../pages/CourseDetails";
 import UpdateCourse from "../pages/UpdateCourse";
+import DashboardLayout from "../layouts/DashboardLayout";
+import PageNotFound from "../pages/PageNotFound";
 
 const router = createBrowserRouter([
     {
         path: "/",
         Component: MainLayout,
+        errorElement: <PageNotFound></PageNotFound>,
         children: [
             {
                 index: true,
@@ -38,7 +40,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
             {
                 path: "myEnrolledCourses",
@@ -68,6 +70,10 @@ const router = createBrowserRouter([
             },
         ]
     },
+    {
+        path: "*",
+        Component: PageNotFound
+    }
 ])
 
 export default router;

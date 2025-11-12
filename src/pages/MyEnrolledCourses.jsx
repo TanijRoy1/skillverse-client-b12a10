@@ -20,13 +20,13 @@ const MyEnrolledCourses = () => {
   }, [loading, user, axiosSecure]);
 
   return (
-    <div className="py-10 min-h-screen bg-gray-50 shadow-md border border-gray-200 rounded-2xl">
+    <div className="py-10 min-h-screen bg-base-200 shadow-md border border-base-300 rounded-2xl">
       <MyContainer>
         <h2 className="text-center text-4xl font-bold text-primary mb-4">
           My Enrolled Courses
         </h2>
 
-        <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+        <p className="text-center text-base-content max-w-2xl mx-auto mb-12">
           Here are the courses you’ve enrolled in. Continue your learning
           journey, track your progress, or remove courses you no longer wish to
           follow.
@@ -36,9 +36,24 @@ const MyEnrolledCourses = () => {
           <Spinner />
         ) : (
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
-            {courses.map((course) => (
-              <MyEnrolledCard key={course._id} course={course} />
-            ))}
+            {courses.length === 0 ? (
+              <div className="text-center col-span-full py-16 bg-base-300 rounded-2xl shadow-inner border border-base-200">
+                <h2 className="text-2xl font-semibold text-accent mb-2">
+                  No Enrolled Courses Yet 🎓
+                </h2>
+                <p className="text-base-content">
+                  You haven’t enrolled in any courses. Explore our{" "}
+                  <span className="text-primary font-medium">
+                    popular courses
+                  </span>{" "}
+                  to start learning today!
+                </p>
+              </div>
+            ) : (
+              courses.map((course) => (
+                <MyEnrolledCard key={course._id} course={course} />
+              ))
+            )}
           </div>
         )}
       </MyContainer>
