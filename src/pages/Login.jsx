@@ -72,7 +72,7 @@ const Login = () => {
 
   return (
     <div className="flex-1 flex items-center justify-center bg-linear-to-br from-indigo-700 via-purple-600 to-blue-500 py-8 px-4">
-      <div className="card bg-white/20 backdrop-blur-md w-full max-w-sm mx-auto shrink-0 shadow-2xl text-white border border-white/30">
+      <div className="animate__animated animate__zoomIn card bg-white/20 backdrop-blur-md w-full max-w-sm mx-auto shrink-0 shadow-2xl text-white border border-white/30">
         <div className="card-body">
           <h1 className="text-center text-xl font-bold mb-2 text-yellow-400">
             Welcome Back to SkillVerse ✨
@@ -117,7 +117,7 @@ const Login = () => {
                 <Link
                   to={`/forgetPassword`}
                   type="button"
-                  className="link link-hover font-medium text-[#F7B267]"
+                  className="link link-hover font-medium text-[#184E77]"
                 >
                   Forgot password?
                 </Link>
@@ -171,7 +171,7 @@ const Login = () => {
             <span className="">Don’t have an account yet?</span>
             <Link
               to={`/auth/register`}
-              className="text-orange-6 text-[#F7B267] font-semibold hover:underline"
+              className="text-[#184E77] font-semibold hover:underline"
             >
               Register
             </Link>

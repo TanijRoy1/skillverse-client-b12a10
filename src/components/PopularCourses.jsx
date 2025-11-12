@@ -16,7 +16,11 @@ const PopularCourses = () => {
     });
   }, [axiosPublic]);
   return (
-    <div className="bg-base-200 py-10">
+    <div
+     data-aos="fade-up"
+data-aos-duration="800"
+data-aos-once="false"
+     className="bg-base-200 py-10">
       <MyContainer>
         <h2 className="text-center sm:text-4xl text-3xl font-bold text-primary mb-4">
           Popular Courses
@@ -31,9 +35,9 @@ const PopularCourses = () => {
         {courseLoading ? (
           <Spinner></Spinner>
         ) : (
-          <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
-            {courses.map((course) => (
-              <CourseCard key={course._id} course={course}></CourseCard>
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+            {courses.map((course, index) => (
+              <CourseCard key={course._id} course={course} index={index}></CourseCard>
             ))}
           </div>
         )}

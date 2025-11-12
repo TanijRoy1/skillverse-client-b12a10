@@ -41,7 +41,12 @@ const instructors = [
 
 const TopInstructors = () => {
   return (
-    <section className="bg-base-100 py-16">
+    <section
+      data-aos="fade-up"
+      data-aos-duration="800"
+      data-aos-once="false"
+      className="bg-base-100 py-16"
+    >
       <MyContainer>
         <div className="text-center mb-12">
           <h2 className="sm:text-4xl text-2xl font-bold text-primary mb-3">
@@ -54,8 +59,12 @@ const TopInstructors = () => {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {instructors.map((instructor) => (
+          {instructors.map((instructor, index) => (
             <div
+              data-aos="fade-up"
+              data-aos-delay={index * 200}
+              data-aos-duration="800"
+              data-aos-once="false"
               key={instructor.id}
               className="relative group overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition duration-500"
             >

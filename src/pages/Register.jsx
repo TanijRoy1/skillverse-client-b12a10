@@ -92,7 +92,7 @@ const Register = () => {
 
   return (
     <div className="flex-1 flex items-center justify-center bg-linear-to-br from-indigo-700 via-purple-600 to-blue-500 py-8 px-4">
-      <div className="card bg-white/20 backdrop-blur-md w-full max-w-sm shrink-0 shadow-2xl text-white border border-white/30">
+      <div className="animate__animated animate__zoomIn card bg-white/20 backdrop-blur-md w-full max-w-sm shrink-0 shadow-2xl text-white border border-white/30">
         <div className="card-body">
           <h1 className="text-center text-xl font-bold mb-2 text-yellow-400">
             Create Your SkillVerse Account

@@ -97,8 +97,8 @@ const CourseDetails = () => {
       </div>
 
       <MyContainer className="py-10">
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="md:col-span-2">
+        <div className="flex md:flex-row flex-col gap-8">
+          <div className="flex-1">
             <h2 className="text-2xl font-semibold mb-4">About This Course</h2>
             <p className="text-white/90 leading-relaxed">{description}</p>
 
@@ -121,7 +121,7 @@ const CourseDetails = () => {
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 space-y-4 shadow-xl">
+          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl md:w-[40%] p-6 space-y-4 shadow-xl">
             <h3 className="text-xl font-semibold text-[#FFD166]">
               Course Details
             </h3>
@@ -157,6 +157,7 @@ const CourseDetails = () => {
             </div>
           </div>
         </div>
+        
       </MyContainer>
     </div>
   );

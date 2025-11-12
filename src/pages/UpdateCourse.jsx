@@ -57,7 +57,7 @@ const UpdateCourse = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-700 via-purple-600 to-blue-500 py-10 px-4">
-      <div className="card bg-white/20 backdrop-blur-md w-full max-w-lg shadow-2xl border border-white/30 text-white">
+      <div className="animate__animated animate__zoomIn card bg-white/20 backdrop-blur-md w-full max-w-lg shadow-2xl border border-white/30 text-white">
         <div className="card-body">
           <h1 className="text-2xl font-bold text-[#FFD166] text-center mb-5">
             Update Course

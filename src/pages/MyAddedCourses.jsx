@@ -5,6 +5,8 @@ import useAuth from "../hooks/useAuth";
 import Spinner from "../components/Spinner";
 import MyCourseCard from "../components/MyCourseCard";
 import { Link } from "react-router";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const MyAddedCourses = () => {
   const axiosSecure = useAxiosSecure();
@@ -20,14 +22,24 @@ const MyAddedCourses = () => {
     });
   }, [axiosSecure, user, loading]);
 
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      offset: 100,
+      easing: "ease-in-out",
+      once: false,
+      mirror: true,
+    });
+  }, []);
+
   return (
     <div className=" py-10 min-h-screen bg-base-200 shadow-md border border-base-300 rounded-2xl">
       <MyContainer>
-        <h2 className="text-center sm:text-4xl text-2xl font-bold text-primary mb-4">
+        <h2 className="animate__animated animate__lightSpeedInRight text-center sm:text-4xl text-2xl font-bold text-primary mb-4">
           My Added Courses
         </h2>
 
-        <p className="text-center text-base-content max-w-2xl mx-auto mb-12">
+        <p className="animate__animated animate__lightSpeedInRight text-center text-base-content max-w-2xl mx-auto mb-12">
           Manage all the courses you’ve created on SkillVerse. You can update
           course details, track enrollments, or remove outdated content anytime.
         </p>
@@ -35,7 +47,7 @@ const MyAddedCourses = () => {
         {courseLoading ? (
           <Spinner></Spinner>
         ) : (
-          <div className="grid lg:grid-cols-3 grid-cols-1 gap-4">
+          <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-4">
             {courses.length === 0 ? (
               <div className="text-center col-span-full py-16 bg-base-300 rounded-2xl shadow-inner border border-base-200">
                 <h2 className="text-2xl font-semibold text-accent mb-2">
@@ -57,8 +69,14 @@ const MyAddedCourses = () => {
                 </Link>
               </div>
             ) : (
-              courses.map((course) => (
-                <MyCourseCard key={course._id} course={course} courses={courses} setCourses={setCourses}></MyCourseCard>
+              courses.map((course, index) => (
+                <MyCourseCard
+                  key={course._id}
+                  course={course}
+                  courses={courses}
+                  setCourses={setCourses}
+                  index={index}
+                ></MyCourseCard>
               ))
             )}
           </div>

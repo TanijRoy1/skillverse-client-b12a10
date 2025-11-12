@@ -37,10 +37,10 @@ const AddCourse = () => {
     });
   };
   return (
-    <div className="min-h-screen bg-base-200  shadow-md border border-base-300 rounded-2xl py-12">
-      <MyContainer>
-        <div className="max-w-2xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-2xl">
-          <h2 className="text-3xl font-bold mb-6 text-center text-primary">
+    <div className="min-h-screen bg-base-200 container mx-auto md:px-4  shadow-md border border-base-300 rounded-2xl md:py-12">
+      
+        <div className="animate__animated animate__zoomIn max-w-2xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-2xl">
+          <h2 className="sm:text-3xl text-2xl font-bold mb-6 text-center text-primary">
             Add a New Course
           </h2>
 
@@ -187,7 +187,7 @@ const AddCourse = () => {
             </button>
           </form>
         </div>
-      </MyContainer>
+      
     </div>
   );
 };

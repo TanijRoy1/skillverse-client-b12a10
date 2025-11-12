@@ -35,10 +35,10 @@ const Banner = () => {
             />
             <div className="absolute inset-0 bg-black/50"></div>
             <div className="absolute top-1/2 sm:left-16 left-4 transform -translate-y-1/2 text-white max-w-lg">
-              <h1 className="sm:text-4xl text-xl font-bold mb-3 text-yellow-400">
+              <h1 className="animate__animated animate__rollIn sm:text-4xl text-xl font-bold mb-3 text-yellow-400">
                 Learn From Anywhere, Anytime 🌍
               </h1>
-              <p className="sm:text-lg text-xs leading-relaxed">
+              <p className="animate__animated animate__lightSpeedInRight sm:text-lg text-xs leading-relaxed">
                 Access world-class courses and grow your skills with SkillVerse —
                 your gateway to modern learning.
               </p>
