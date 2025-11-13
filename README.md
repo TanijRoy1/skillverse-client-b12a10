@@ -1,16 +1,57 @@
-# React + Vite
+# 🎓 SkillVerse – Explore & Learn Your Favorite Courses
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🧩 Description
 
-Currently, two official plugins are available:
+**SkillVerse** is a responsive React application where users can explore various online courses, view detailed course information, read reviews, and enroll in courses.  
+It supports dynamic course browsing, filtering, rating, carousel sliders, and interactive notifications.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
 
-## React Compiler
+🔗 [View Deployed App](https://skillverse-client-b12a10.netlify.app)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 💡 Features
 
-## Expanding the ESLint configuration
+- Browse, and filter courses across multiple categories like Programming, Data Science, Design, and more.
+- View detailed course information, including description, instructor, duration, and enrolled learners.
+- Add reviews and ratings for courses.
+- Responsive carousel for featured courses using Swiper.js.
+- Interactive toast notifications with Hot Toast.
+- Sweet Alert pop-ups for enrollment confirmation and other actions.
+- Animated elements with AOS and Animate.css for smooth UX.
+- Firebase authentication and Firestore integration for user management.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🧰 Technologies Used
+
+| Technology           | Purpose                        |
+| -------------------- | ------------------------------ |
+| **React.js**         | Frontend framework             |
+| **React Router**     | Routing and navigation         |
+| **Tailwind CSS**     | Styling                        |
+| **DaisyUI**          | Pre-styled UI components       |
+| **React Icons**      | Icons for UI elements          |
+| **Swiper.js**        | Carousel sliders               |
+| **Hot Toast**        | Toast notifications            |
+| **Sweet Alert**      | Pop-up alerts                  |
+| **AOS & Animate.css**| Animations                     |
+| **Recharts**         | Data visualization             |
+| **Axios**            | API requests                   |
+| **Firebase**         | Authentication & Firestore     |
+| **Spinners React**   | Loading indicators             |
+
+
+
+## ⚙️ Installation
+
+1. Clone the repository:  
+```js
+git clone https://github.com/TanijRoy1/skillverse-client-b12a10.git
+```
+
+
+## 💡 Author
+
+👤 **Tanij Roy**  
+🔗 [GitHub Profile](https://github.com/TanijRoy1)
+
+---
+

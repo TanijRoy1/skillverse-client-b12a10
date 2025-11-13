@@ -36,9 +36,9 @@ const ProgressPage = () => {
               <XAxis
                 type="number"
                 domain={[0, (dataMax) => dataMax]}
-                stroke="#8884d8"
+                stroke="#FFFFFF"
               />
-              <YAxis type="category" dataKey="task" stroke="#8884d8" />
+              <YAxis type="category" dataKey="task" stroke="#FFFFFF" />
               <Tooltip
                 formatter={(value, name, props) =>
                   `${value} / ${props.payload.total}`
