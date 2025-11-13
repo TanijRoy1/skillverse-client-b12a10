@@ -13,6 +13,7 @@ import CourseDetails from "../pages/CourseDetails";
 import UpdateCourse from "../pages/UpdateCourse";
 import DashboardLayout from "../layouts/DashboardLayout";
 import PageNotFound from "../pages/PageNotFound";
+import ProgressPage from "../pages/ProgressPage";
 
 const router = createBrowserRouter([
     {
@@ -35,7 +36,11 @@ const router = createBrowserRouter([
             {
                 path: "updateCourse/:id",
                 element: <PrivateRoute><UpdateCourse></UpdateCourse></PrivateRoute>
-            },  
+            },
+            {
+                path: "progress",
+                Component: ProgressPage,
+            }  
         ]
     },
     {
@@ -53,7 +58,7 @@ const router = createBrowserRouter([
             {
                 path: "myAddedCourses",
                 Component: MyAddedCourses
-            }
+            },
         ]
     },
     {

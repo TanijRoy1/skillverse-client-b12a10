@@ -15,6 +15,8 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const CourseDetails = () => {
   const axiosSecure = useAxiosSecure();
@@ -50,6 +52,16 @@ const CourseDetails = () => {
       setReviews(data.data);
     });
   }, [axiosSecure, id]);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      offset: 100,
+      easing: "ease-in-out",
+      once: false,
+      mirror: true,
+    });
+  }, []);
 
   const handleEnroll = () => {
     const newCourse = {
@@ -123,10 +135,10 @@ const CourseDetails = () => {
         )}
 
         <div className="absolute bottom-10 sm:left-10 left-4 max-w-2xl">
-          <h1 className="text-3xl sm:text-4xl font-extrabold mb-3 text-[#FFD166]">
+          <h1 className="animate__animated animate__lightSpeedInRight text-3xl sm:text-4xl font-extrabold mb-3 text-[#FFD166]">
             {title}
           </h1>
-          <p className="text-lg text-white/90">
+          <p className="animate__animated animate__lightSpeedInRight text-lg text-white/90">
             {description.slice(0, 150)}...
           </p>
         </div>
@@ -134,11 +146,20 @@ const CourseDetails = () => {
 
       <MyContainer className="py-10">
         <div className="flex md:flex-row flex-col gap-8">
-          <div className="flex-1">
+          <div
+            data-aos="fade-up"
+            data-aos-duration="800"
+            data-aos-once="false"
+            className="flex-1"
+          >
             <h2 className="text-2xl font-semibold mb-4">About This Course</h2>
             <p className="text-white/90 leading-relaxed">{description}</p>
 
-            <div className="mt-8 gap-4 bg-white/10 border border-white/20 p-4 rounded-2xl shadow-md">
+            <div
+             data-aos="zoom-in-up"
+            data-aos-duration="800"
+            data-aos-once="false"
+             className="mt-8 gap-4 bg-white/10 border border-white/20 p-4 rounded-2xl shadow-md">
               <h1 className="text-2xl font-bold mb-4 text-[#FFD166]">
                 Course Instructor
               </h1>
@@ -157,7 +178,12 @@ const CourseDetails = () => {
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl md:w-[40%] p-6 space-y-4 shadow-xl">
+          <div
+            data-aos="zoom-in-up"
+            data-aos-duration="800"
+            data-aos-once="false"
+            className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl md:w-[40%] p-6 space-y-4 shadow-xl"
+          >
             <h3 className="text-xl font-semibold text-[#FFD166]">
               Course Details
             </h3>
@@ -200,6 +226,9 @@ const CourseDetails = () => {
           </h2>
 
           <form
+            data-aos="zoom-in-up"
+            data-aos-duration="800"
+            data-aos-once="false"
             onSubmit={handleAddReview}
             className="max-w-xl mx-auto mb-12 p-6 rounded-2xl bg-white/10 border border-white/20 shadow-lg backdrop-blur-md space-y-5"
           >
@@ -252,7 +281,11 @@ const CourseDetails = () => {
             ) : (
               reviews.map((r, index) => (
                 <div
-                  key={index}
+                  data-aos="fade-up"
+                  data-aos-delay={index * 200}
+                  data-aos-duration="800"
+                  data-aos-once="false"
+                  key={r._id}
                   className="bg-white/10 border border-white/20 rounded-2xl p-6 shadow-md hover:shadow-lg hover:border-[#FFD166]/40 transition-all duration-300"
                 >
                   <div className="flex items-center gap-4 mb-3">
@@ -261,19 +294,17 @@ const CourseDetails = () => {
                       alt={r.name}
                       className="w-14 h-14 rounded-full object-cover border-2 border-[#FFD166]"
                     />
-                    <div>
-                      <h3 className="text-lg font-semibold text-white flex sm:flex-row flex-col sm:items-center sm:gap-2 gap-1">
+                    <div className="flex flex-col">
+                      <h3 className="text-lg font-semibold text-white">
                         {r.name}
-                        <span className="flex">
-                          {[...Array(r.rating)].map((_, i) => (
-                            <FaStar
-                              key={i}
-                              className="text-yellow-400 text-sm"
-                            />
-                          ))}
-                        </span>
                       </h3>
-                      <p className="text-white/60 text-sm mt-1">{r.email}</p>
+                      <p className="text-white/60 text-sm">{r.email}</p>
+
+                      <span className="flex mt-1">
+                        {[...Array(r.rating)].map((_, i) => (
+                          <FaStar key={i} className="text-yellow-400 text-sm" />
+                        ))}
+                      </span>
                     </div>
                   </div>
 
