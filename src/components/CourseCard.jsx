@@ -12,7 +12,7 @@ const CourseCard = ({ course, index }) => {
     description,
     instructorEmail,
   } = course;
-  console.log(index)
+ 
 
   return (
     <div

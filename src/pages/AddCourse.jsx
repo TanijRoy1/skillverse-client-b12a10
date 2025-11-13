@@ -41,7 +41,7 @@ const AddCourse = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
   
     useEffect(() => {
-      setTheme(localStorage.getItem("theme") || "dark")
+      setTheme(localStorage.getItem("theme") || "dark");
       document.querySelector("html").setAttribute("data-theme", theme);
       localStorage.setItem("theme", theme);
     }, [theme]);
