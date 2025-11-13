@@ -50,7 +50,7 @@ const MyCourseCard = ({ course, courses, setCourses, index }) => {
 
         <button
           onClick={() => handleDelete(_id)}
-          className="absolute top-3 right-3 bg-red-500 text-white p-2 rounded-full cursor-pointer opacity-0 group-hover:opacity-100 hover:bg-red-600 transition-all duration-300 shadow-md"
+          className="absolute top-3 right-3 bg-red-500 text-white p-2 rounded-full cursor-pointer opacity-100 lg:opacity-0 lg:group-hover:opacity-100 hover:bg-red-600 transition-all duration-300 shadow-md"
           title="Delete Course"
         >
           <FaTrash size={16} />

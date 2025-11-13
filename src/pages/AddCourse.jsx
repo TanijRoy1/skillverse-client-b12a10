@@ -28,7 +28,7 @@ const AddCourse = () => {
     // console.log(newCourse);
 
     axiosSecure.post("/courses", newCourse).then((data) => {
-      console.log(data.data);
+      // console.log(data.data);
       if (data.data.insertedId) {
         toast.success(`${newCourse.title} is added successfully`);
         e.target.reset();
