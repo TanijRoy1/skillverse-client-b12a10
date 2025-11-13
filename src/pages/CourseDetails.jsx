@@ -63,6 +63,14 @@ const CourseDetails = () => {
     });
   }, []);
 
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
+
+  useEffect(() => {
+    setTheme(localStorage.getItem("theme") || "dark");
+    document.querySelector("html").setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
   const handleEnroll = () => {
     const newCourse = {
       courseId: id,
@@ -156,10 +164,11 @@ const CourseDetails = () => {
             <p className="text-white/90 leading-relaxed">{description}</p>
 
             <div
-             data-aos="zoom-in-up"
-            data-aos-duration="800"
-            data-aos-once="false"
-             className="mt-8 gap-4 bg-white/10 border border-white/20 p-4 rounded-2xl shadow-md">
+              data-aos="zoom-in-up"
+              data-aos-duration="800"
+              data-aos-once="false"
+              className="mt-8 gap-4 bg-white/10 border border-white/20 p-4 rounded-2xl shadow-md"
+            >
               <h1 className="text-2xl font-bold mb-4 text-[#FFD166]">
                 Course Instructor
               </h1>

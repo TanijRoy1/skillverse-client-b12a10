@@ -30,6 +30,13 @@ const Courses = () => {
       mirror: true,
     });
   }, []);
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
+
+  useEffect(() => {
+    setTheme(localStorage.getItem("theme") || "dark");
+    document.querySelector("html").setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   const handleFilter = (category) => {
     if (category === "All") {

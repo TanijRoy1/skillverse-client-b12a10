@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
@@ -69,6 +69,14 @@ const Login = () => {
         }
       });
   };
+
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
+
+  useEffect(() => {
+    setTheme(localStorage.getItem("theme") || "dark");
+    document.querySelector("html").setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   return (
     <div className="flex-1 flex items-center justify-center bg-linear-to-br from-indigo-700 via-purple-600 to-blue-500 py-8 px-4">

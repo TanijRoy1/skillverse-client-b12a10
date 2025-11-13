@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -11,6 +11,13 @@ import {
 import { Link } from "react-router";
 
 const ProgressPage = () => {
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
+
+  useEffect(() => {
+    setTheme(localStorage.getItem("theme") || "dark");
+    document.querySelector("html").setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   const progressData = [
     { task: "Lessons Completed", completed: 8, total: 10 },

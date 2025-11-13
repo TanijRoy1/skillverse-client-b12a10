@@ -1,7 +1,15 @@
 import { Link } from "react-router";
 import { FaHome } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 const PageNotFound = () => {
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
+  
+    useEffect(() => {
+      setTheme(localStorage.getItem("theme") || "dark");
+      document.querySelector("html").setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme);
+    }, [theme]);
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-500 text-white px-6 text-center">
       <h1 className="text-8xl font-extrabold mb-4">404</h1>

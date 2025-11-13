@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Banner from "../components/Banner";
 import PopularCourses from "../components/PopularCourses";
 import WhyChooseUs from "../components/WhyChooseUs";
@@ -16,6 +16,14 @@ const Home = () => {
       mirror: true,
     });
   }, []);
+
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
+  
+    useEffect(() => {
+      setTheme(localStorage.getItem("theme") || "dark");
+      document.querySelector("html").setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme);
+    }, [theme]);
 
   return (
     <div>

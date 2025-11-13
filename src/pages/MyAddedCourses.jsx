@@ -32,6 +32,14 @@ const MyAddedCourses = () => {
     });
   }, []);
 
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
+
+  useEffect(() => {
+    setTheme(localStorage.getItem("theme") || "dark");
+    document.querySelector("html").setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
   return (
     <div className=" py-10 min-h-screen bg-base-200 shadow-md border border-base-300 rounded-2xl">
       <MyContainer>

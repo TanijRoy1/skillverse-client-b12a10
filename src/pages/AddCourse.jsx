@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MyContainer from "../components/MyContainer";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
@@ -36,6 +36,16 @@ const AddCourse = () => {
       }
     });
   };
+
+
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
+  
+    useEffect(() => {
+      setTheme(localStorage.getItem("theme") || "dark")
+      document.querySelector("html").setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme);
+    }, [theme]);
+
   return (
     <div className="min-h-screen bg-base-200 container mx-auto md:px-4  shadow-md border border-base-300 rounded-2xl md:py-12">
       
