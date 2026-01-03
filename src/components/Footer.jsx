@@ -37,8 +37,13 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link to="/dashboard/myEnrolledCourses" className="hover:text-primary">
-                Dashboard
+              <Link to="/blogs" className="hover:text-primary">
+                Blog
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" className="hover:text-primary">
+                Contact
               </Link>
             </li>
           </ul>

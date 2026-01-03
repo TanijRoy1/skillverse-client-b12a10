@@ -14,6 +14,9 @@ import UpdateCourse from "../pages/UpdateCourse";
 import DashboardLayout from "../layouts/DashboardLayout";
 import PageNotFound from "../pages/PageNotFound";
 import ProgressPage from "../pages/ProgressPage";
+import Blog from "../pages/Blog";
+import Contact from "../pages/Contact";
+import DashboardHome from "../pages/DashboardHome";
 
 const router = createBrowserRouter([
     {
@@ -31,11 +34,19 @@ const router = createBrowserRouter([
             },
             {
                 path: "courseDetails/:id",
-                element: <PrivateRoute><CourseDetails></CourseDetails></PrivateRoute>
+                element: <CourseDetails></CourseDetails>
             },
             {
                 path: "updateCourse/:id",
                 element: <PrivateRoute><UpdateCourse></UpdateCourse></PrivateRoute>
+            },
+            {
+                path: "blogs",
+                Component: Blog
+            },
+            {
+                path: "contact",
+                Component: Contact
             },
             {
                 path: "progress",
@@ -47,6 +58,10 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
+            {
+                index: true,
+                Component: DashboardHome
+            },
             {
                 path: "myEnrolledCourses",
                 Component: MyEnrolledCourses

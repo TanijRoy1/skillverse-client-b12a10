@@ -40,7 +40,6 @@ const instructors = [
 ];
 
 const TopInstructors = () => {
-  
   return (
     <section
       data-aos="fade-up"
@@ -61,8 +60,10 @@ const TopInstructors = () => {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {instructors.map((instructor, index) => (
-            
-            <InstructorCard instructor={instructor} index={index}></InstructorCard>
+            <InstructorCard
+              instructor={instructor}
+              index={index}
+            ></InstructorCard>
           ))}
         </div>
       </MyContainer>

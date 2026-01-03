@@ -23,7 +23,7 @@ const PopularCourses = () => {
       className="bg-base-200 py-10"
     >
       <MyContainer>
-        <h2 className="text-center sm:text-4xl text-3xl font-bold text-primary mb-4">
+        <h2 className="text-center sm:text-4xl text-2xl font-bold text-primary mb-4">
           Popular Courses
         </h2>
 
@@ -36,7 +36,7 @@ const PopularCourses = () => {
         {courseLoading ? (
           <Spinner></Spinner>
         ) : (
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+          <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-2">
             {courses.map((course, index) => (
               <CourseCard
                 key={course._id}

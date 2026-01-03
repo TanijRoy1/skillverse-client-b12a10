@@ -3,12 +3,14 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
+import useAxios from "../hooks/useAxios";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
   const { signInUser, googleSignUser } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+  const axiosPublic = useAxios();
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -52,9 +54,22 @@ const Login = () => {
       .then((result) => {
         const currUser = result.user;
         // console.log(currUser);
+        const userInfo = {
+          email: currUser.email,
+          displayName: currUser.displayName,
+          photoURL: currUser.photoURL,
+          role: "student",
+        };
+        axiosPublic.post("/users", userInfo).then((res) => {
+          if (res.data.insertedId) {
+            //   console.log("user added to database.");
+            toast.success("Account created & User created successfully!");
+          }
+        });
         toast.success(
           `${currUser.displayName} Signed in with Google successfully.`
         );
+
         navigate(location?.state || "/");
       })
       .catch((e) => {

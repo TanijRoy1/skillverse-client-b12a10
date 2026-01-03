@@ -17,7 +17,7 @@ const WhyChooseUs = () => {
     >
       <MyContainer>
         <div className="text-center mb-12">
-          <h2 className="sm:text-4xl text-3xl font-bold text-primary mb-3">
+          <h2 className="sm:text-4xl text-2xl font-bold text-primary mb-3">
             Why Choose{" "}
             <span className=" text-blue-800">
               <span className="text-cyan-500">Skill</span>Verse

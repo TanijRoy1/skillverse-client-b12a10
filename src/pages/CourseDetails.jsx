@@ -17,8 +17,10 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import useAxios from "../hooks/useAxios";
 
 const CourseDetails = () => {
+  const axiosPublic = useAxios();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const { id } = useParams();
@@ -41,17 +43,17 @@ const CourseDetails = () => {
   } = course;
 
   useEffect(() => {
-    axiosSecure.get(`/courses/${id}`).then((data) => {
+    axiosPublic.get(`/courses/${id}`).then((data) => {
       setCourse(data.data);
       setCourseLoading(false);
     });
-  }, [axiosSecure, id, refetch]);
+  }, [axiosPublic, id, refetch]);
 
   useEffect(() => {
-    axiosSecure.get(`/reviews/${id}`).then((data) => {
+    axiosPublic.get(`/reviews/${id}`).then((data) => {
       setReviews(data.data);
     });
-  }, [axiosSecure, id]);
+  }, [axiosPublic, id]);
 
   useEffect(() => {
     AOS.init({
@@ -131,7 +133,7 @@ const CourseDetails = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-700 via-purple-600 to-blue-500 text-white">
+    <div className="min-h-screen bg-linear-to-br from-indigo-700 via-purple-600 to-blue-500 text-white">
       <div className="relative w-full h-[65vh] overflow-hidden">
         <img src={image} alt={title} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/50"></div>
@@ -213,12 +215,21 @@ const CourseDetails = () => {
             </div>
 
             <div className="flex flex-col gap-3 pt-4">
-              <button
-                onClick={handleEnroll}
-                className="btn bg-[#06D6A0] border-0 hover:bg-[#04B58A] text-black font-semibold"
-              >
-                Enroll Now
-              </button>
+              {user ? (
+                <button
+                  onClick={handleEnroll}
+                  className="btn bg-[#06D6A0] border-0 hover:bg-[#04B58A] text-black font-semibold"
+                >
+                  Enroll Now
+                </button>
+              ) : (
+                <Link
+                  to={`/auth/login`}
+                  className="btn bg-[#06D6A0] border-0 hover:bg-[#04B58A] text-black font-semibold"
+                >
+                  Enroll Now
+                </Link>
+              )}
               <Link
                 to="/courses"
                 className="btn flex items-center justify-center gap-2 bg-[#FFD166] border-0 hover:bg-[#FFC300] text-black font-semibold"
@@ -275,7 +286,8 @@ const CourseDetails = () => {
 
             <button
               type="submit"
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-[#06D6A0] to-[#FFD166] text-black font-semibold text-lg shadow-md hover:shadow-xl hover:scale-[1.02] transition-transform duration-300"
+              disabled={user ? false : true}
+              className="w-full py-3 rounded-xl bg-linear-to-r cursor-pointer disabled:cursor-not-allowed from-[#06D6A0] to-[#FFD166] text-black font-semibold text-lg shadow-md hover:shadow-xl hover:scale-[1.02] disabled:shadow-md disabled:scale-100 transition-transform duration-300"
             >
               Submit Review
             </button>

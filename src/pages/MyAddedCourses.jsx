@@ -41,7 +41,7 @@ const MyAddedCourses = () => {
   }, [theme]);
 
   return (
-    <div className=" py-10 min-h-screen bg-base-200 shadow-md border border-base-300 rounded-2xl">
+    <div className=" py-10 min-h-screen bg-base-200 shadow-md border border-base-300 rounded">
       <MyContainer>
         <h2 className="animate__animated animate__lightSpeedInRight text-center sm:text-4xl text-2xl font-bold text-primary mb-4">
           My Added Courses
@@ -55,7 +55,7 @@ const MyAddedCourses = () => {
         {courseLoading ? (
           <Spinner></Spinner>
         ) : (
-          <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-4">
+          <div className="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-2">
             {courses.length === 0 ? (
               <div className="text-center col-span-full py-16 bg-base-300 rounded-2xl shadow-inner border border-base-200">
                 <h2 className="text-2xl font-semibold text-accent mb-2">

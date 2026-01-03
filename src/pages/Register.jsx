@@ -3,11 +3,13 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
+import useAxios from "../hooks/useAxios";
 
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
   const { setUser, signUpUser, updateUser, googleSignUser } = useAuth();
   const navigate = useNavigate();
+  const axiosPublic = useAxios();
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -38,7 +40,18 @@ const Register = () => {
           });
 
         e.target.reset();
-        toast.success("Account created successfully.");
+        const userInfo = {
+          email: email,
+          displayName: name,
+          photoURL: photoURL,
+          role: "student",
+        };
+        axiosPublic.post("/users", userInfo).then((res) => {
+          if (res.data.insertedId) {
+            //   console.log("user added to database.");
+            toast.success("Account created & User created successfully!");
+          }
+        });
         navigate("/");
       })
       .catch((e) => {
@@ -80,6 +93,18 @@ const Register = () => {
       .then((result) => {
         const currUser = result.user;
         // console.log(currUser);
+        const userInfo = {
+          email: currUser.email,
+          displayName: currUser.displayName,
+          photoURL: currUser.photoURL,
+          role: "student",
+        };
+        axiosPublic.post("/users", userInfo).then((res) => {
+          if (res.data.insertedId) {
+            //   console.log("user added to database.");
+            toast.success("Account created & User created successfully!");
+          }
+        });
         toast.success(
           `${currUser.displayName} Signed in with Google successfully.`
         );

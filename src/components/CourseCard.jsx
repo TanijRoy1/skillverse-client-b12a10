@@ -12,42 +12,46 @@ const CourseCard = ({ course, index }) => {
     description,
     instructorEmail,
   } = course;
- 
 
   return (
     <div
       data-aos="fade-up"
-      data-aos-delay={index * 200}
-      data-aos-duration="800"
-      data-aos-once="false"
-      className="bg-base-100 shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 flex flex-col"
+      data-aos-delay={index * 100}
+      data-aos-duration="700"
+      className="bg-base-100 border border-base-300 rounded overflow-hidden hover:shadow-lg transform hover:-translate-y-1 transition-all ease-in duration-300 flex flex-col"
     >
-      <img
-        src={image}
-        alt={title}
-        className="w-full h-56 object-cover transition-transform duration-300 hover:scale-105"
-      />
+      <div className="relative">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-40 transform hover:scale-105 transition-all duration-300 object-cover"
+        />
+        <span className="absolute top-3 left-3 badge badge-secondary badge-sm">
+          {category}
+        </span>
+      </div>
 
-      <div className="p-5 flex-1 flex flex-col">
-        <h3 className="text-xl font-semibold text-primary mb-2">{title}</h3>
+      <div className="p-4 flex flex-col flex-1">
+        <h3 className="text-base font-semibold text-accent line-clamp-2">
+          {title}
+        </h3>
 
-        <p className="text-base-content/70 text-sm mb-3 flex-1">
-          {description.slice(0, 100)}...
+        <p className="text-sm text-accent-content mt-2 line-clamp-2 flex-1">
+          {description}
         </p>
 
-        <div className="flex justify-between items-center mb-3">
-          <span className="text-lg font-bold text-primary">${price}</span>
-          <span className="text-sm text-base-content/70">{duration}</span>
+        <div className="flex items-center justify-between text-sm mt-3">
+          <span className="font-semibold text-primary">${price}</span>
+          <span className="text-accent-content">{duration}</span>
         </div>
 
-        <div className="flex justify-between items-center text-base-content/70 text-sm mb-4">
-          <span className="capitalize">{category}</span>
-          <span>By {instructorEmail}</span>
-        </div>
+        <p className="text-xs text-accent-content mt-2 truncate">
+          Instructor: {instructorEmail}
+        </p>
 
         <Link
           to={`/courseDetails/${_id}`}
-          className="btn btn-primary text-white border-0 w-full"
+          className="btn btn-primary btn-sm w-full mt-4"
         >
           View Details
         </Link>

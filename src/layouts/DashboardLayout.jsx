@@ -8,9 +8,9 @@ const DashboardLayout = () => {
   return (
     <div>
       <Header></Header>
-      <MyContainer className="grid grid-cols-1 md:grid-cols-10 gap-6 min-h-[80vh] my-10">
+      <MyContainer className="grid grid-cols-1 md:grid-cols-10 gap-3 min-h-[80vh] my-10">
         
-        <aside className="bg-base-200 shadow-md border border-base-300 rounded-2xl lg:col-span-3 md:col-span-4 col-span-12 w-full py-6 px-3 flex flex-col gap-3">
+        <aside className="bg-base-200 shadow-md border border-base-300 rounded lg:col-span-3 md:col-span-4 col-span-12 w-full py-6 px-3 flex flex-col gap-3">
           <h2 className="text-xl font-bold text-primary mb-4 text-center">
             Dashboard
           </h2>

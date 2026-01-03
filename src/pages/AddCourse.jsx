@@ -47,9 +47,9 @@ const AddCourse = () => {
     }, [theme]);
 
   return (
-    <div className="min-h-screen bg-base-200 container mx-auto md:px-4  shadow-md border border-base-300 rounded-2xl md:py-12">
+    <div className="min-h-screen bg-base-200 container mx-auto md:px-4  shadow-md border border-base-300 rounded md:py-12">
       
-        <div className="animate__animated animate__zoomIn max-w-2xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-2xl">
+        <div className="animate__animated animate__zoomIn max-w-2xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 rounded p-8 shadow-2xl">
           <h2 className="sm:text-3xl text-2xl font-bold mb-6 text-center text-primary">
             Add a New Course
           </h2>
@@ -60,7 +60,7 @@ const AddCourse = () => {
               <input
                 type="text"
                 name="title"
-                placeholder="Enter course title"
+                // placeholder="Enter course title"
                 required
                 className="w-full px-4 py-2 rounded-lg bg-white/80 text-black border-none outline-none"
               />
@@ -71,7 +71,7 @@ const AddCourse = () => {
               <input
                 type="text"
                 name="image"
-                placeholder="Enter image URL"
+                // placeholder="Enter image URL"
                 required
                 className="w-full px-4 py-2 rounded-lg bg-white/80 text-black border-none outline-none"
               />
@@ -83,7 +83,7 @@ const AddCourse = () => {
                 <input
                   type="text"
                   name="price"
-                  placeholder="Enter price"
+                  // placeholder="Enter price"
                   required
                   className="w-full px-4 py-2 rounded-lg bg-white/80 text-black border-none outline-none"
                 />
@@ -94,7 +94,7 @@ const AddCourse = () => {
                 <input
                   type="text"
                   name="duration"
-                  placeholder="e.g. 5 hours, 2 weeks"
+                  // placeholder="e.g. 5 hours, 2 weeks"
                   required
                   className="w-full px-4 py-2 rounded-lg bg-white/80 text-black border-none outline-none"
                 />
@@ -108,7 +108,7 @@ const AddCourse = () => {
                   type="text"
                   name="instructorName"
                   value={user?.displayName}
-                  placeholder="Instructor Name"
+                  // placeholder="Instructor Name"
                   required
                   readOnly
                   className="w-full px-4 py-2 rounded-lg bg-white/80 text-black border-none outline-none"
@@ -121,7 +121,7 @@ const AddCourse = () => {
                   type="text"
                   name="instructorEmail"
                   value={user?.email}
-                  placeholder="Instructor Email"
+                  // placeholder="Instructor Email"
                   required
                   readOnly
                   className="w-full px-4 py-2 rounded-lg bg-white/80 text-black border-none outline-none"
@@ -135,7 +135,7 @@ const AddCourse = () => {
                 type="text"
                 name="instructorPhotoURL"
                 value={user?.photoURL}
-                placeholder="Instructor Photo URL"
+                // placeholder="Instructor Photo URL"
                 required
                 readOnly
                 className="w-full px-4 py-2 rounded-lg bg-white/80 text-black border-none outline-none"
@@ -171,7 +171,7 @@ const AddCourse = () => {
               <label className="block mb-2 font-semibold">Description</label>
               <textarea
                 name="description"
-                placeholder="Write a detailed description..."
+                // placeholder="Write a detailed description..."
                 required
                 rows="4"
                 className="w-full px-4 py-2 rounded-lg bg-white/80 text-black border-none outline-none resize-none"

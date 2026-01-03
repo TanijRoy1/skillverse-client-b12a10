@@ -39,7 +39,7 @@ const MyCourseCard = ({ course, courses, setCourses, index }) => {
       data-aos-delay={index * 200}
       data-aos-duration="800"
       data-aos-once="false"
-      className="relative bg-base-100 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group border border-base-300"
+      className="relative bg-base-100 rounded overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 group border border-base-300"
     >
       <div className="relative">
         <img
